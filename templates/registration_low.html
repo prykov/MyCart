@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if reg_errors %}
+    <ul>
+        {% for key, value in reg_errors.items %}
+        <li>{{ key }} - {{ value }} </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+<div class="container">
+    <form action="/user/registration/" method="post">
+        {% csrf_token %}
+        <p>
+            <input type="text" name="name" placeholder="Имя пользователя" required>
+        </p>
+        <p>
+            <input type="text" name="email" placeholder="Адрес электронной почты" required>
+        </p>
+        <p>
+            <input type="text" name="confirm_email" placeholder="Подтверждение почты" required>
+        </p>
+        <p>
+            <input type="password" name="password" placeholder="Пароль" required>
+        </p>
+        <p>
+            <input type="password" name="confirm_password" placeholder="Повторить пароль" required>
+        </p>
+        <button type="submit" name="submit">Отправить</button>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Наименование</th>
+                <th>Кол-во</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>Хлеб</td>
+                <td>1 шт.</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Колбаса</td>
+                <td>500 г.</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Масло</td>
+                <td>200 г.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <form action="#" role="form" class="add-to-cart form-inline">
+        <div class="form-group">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8 col-md-8 col-sm-8">
+                        <input type="text" class="form-control" placeholder="Наименование">
+                    </div>
+                    <div class="col-xs-2 col-md-2 col-sm-2">
+                        <input type="text" class="form-control" placeholder="Кол-во">
+                    </div>
+                    <div class=" col-xs-2 col-md-2 col-sm-2">
+                        <button type="submit" class="btn col-xs-2 col-md-2 col-sm-2">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

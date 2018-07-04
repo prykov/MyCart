@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <a href="/admin/">Пользователи /</a> <a href="/admin/category/">Категории /</a>
+    <a href="/admin/cart/">Корзины /</a> <a href="/admin/product/">Продукты</a>
+    <ul id="users">
+        {% include 'inc-users_list.html' %}
+    </ul>
+    <form action="/admin/" method="post">
+        {% include 'inc-registration_form.html' %}
+        <input type="submit" value="Добавить">
+    </form>
+</div>
+{% endblock %}

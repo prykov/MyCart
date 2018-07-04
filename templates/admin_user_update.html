@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h2>Редактирование профиля {{ user_name }}: </h2>
+    <form action="/admin/user/update/{{ user_id }}" method="post" role="form">
+        {% csrf_token %}
+        {% include 'inc-registration_form.html' %}
+        <input type="submit" value="Отправить">
+    </form>
+</div>
+{% endblock %}

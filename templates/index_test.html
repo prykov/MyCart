@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="table-responsive">
+                {% if error %}
+                <h2> {{ error }}</h2>
+                {% else %}
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Наименование</th>
+                        <th>Категория</th>
+                        <th>Кол-во</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for product in products %}
+                    <tr>
+                        <td>{{ product.n }}</td>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.category }}</td>
+                        <td>{{ product.count }}</td>
+                        <td><a href="/product/delete/{{ product.id }}">Удалить</a></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
+            </div>
+            <form action="/product/create/{{ cart_id }}" role="form" method="post" class="add-to-cart form-inline">
+                {% csrf_token %}
+                <table>
+                    {% for field in product_form %}
+                    <tr>
+                        <td>
+                            {{ field.label_tag }}
+                        </td>
+                        <td>
+                            <div>
+                                <ul>
+                                    {% for error in field.errors %}
+                                    <li class="error"> Ошибка: {{ error }}</li>
+                                    {% endfor %}
+                                    {{ field }}
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                <input type="submit" value="Добавить">
+            </form>
+        </div>
+        <div class="cart_list col-md-4">
+            <h5>Список корзин:</h5>
+            <ul>
+                {% for cart in carts %}
+                <li><a href="/cart/{{ cart.id }}">{{ cart.name }}</a></li>
+                {% endfor %}
+            </ul>
+            <form action="/cart/create/" role="form" method="post" class="form-inline">
+                {% csrf_token %}
+                <table>
+                    {% for field in cart_form %}
+                    <tr>
+                        <td>
+                            {{ field.label_tag }}
+                        </td>
+                        <td>
+                            <div>
+                                <ul>
+                                    {% for error in field.errors %}
+                                    <li class="error"> Ошибка: {{ error }}</li>
+                                    {% endfor %}
+                                    {{ field }}
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                <input type="submit" value="Добавить">
+            </form>
+        </div>
+    </div>
+    </form>
+</div>
+</div>
+
+
+</div>
+{% endblock %}

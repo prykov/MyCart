@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <a href="/admin/">Пользователи /</a> <a href="/admin/category/">Категории /</a>
+    <a href="/admin/cart/">Корзины /</a> <a href="/admin/product/">Продукты</a>
+    <ul>
+        {% for cart in carts %}
+        <li>
+            <a href="/admin/cart/detail/{{ cart.id }}" class="name">{{ cart.name }}</a> <a href="/admin/cart/update/{{ cart.id }}">Редактирвоть</a> <a href="/admin/cart/delete/{{ cart.id }}">Удалить</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <form action="/admin/cart/" method="post">
+        {% include 'admin_update_forms.html' %}
+        <input type="submit" value="Добавить">
+    </form>
+</div>
+{% endblock %}

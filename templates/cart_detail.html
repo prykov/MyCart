@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <a href="/admin/cart/" class="btn btn-default">Назад</a>
+    <h4>
+        Название: {{ cart.name }}
+    </h4>
+    <h4>Описание:</h4>
+    <p>{{ cart.description }}</p>
+    <h4>Польлзователь: {{ cart.user }}</h4>
+    <h4>Список:</h4>
+    <ul>
+    {% for product in products %}
+        <li><a href="/admin/product/detail/{{ product.id }}">{{ product.name }}</a>, {{ product.count }} шт.</li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}

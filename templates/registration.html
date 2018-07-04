@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <form action="/user/registration/" method="post" role="form">
+        {% csrf_token %}
+        {% include 'inc-registration_form.html' %}
+        <input type="submit" value="Отправить">
+    </form>
+</div>
+{% endblock %}

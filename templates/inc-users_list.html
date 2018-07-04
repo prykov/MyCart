@@ -1,0 +1,11 @@
+{% for user in users %}
+<li>
+    {{ user }}
+    <a class="btn btn-default" href="/admin/user/update/{{ user.id }}">
+        <span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>
+    </a>
+    <a href="/admin/user/delete/{{ user.id }}" class="btn btn-default">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+    </a>
+</li>
+{% endfor %}
